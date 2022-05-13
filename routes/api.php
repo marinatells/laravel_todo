@@ -48,5 +48,5 @@ Route::post('/token', function (Request $request) {
 
 
 Route::get('/tasks', [TaskController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/tasks/update', [TaskController::class, 'updateStatus'])->middleware('auth:sanctum');
+Route::post('/tasks/update/{id}', [TaskController::class, 'updateStatus'])->middleware('auth:sanctum');
 Route::post('/tasks/create', [TaskController::class, 'create'])->middleware('auth:sanctum');

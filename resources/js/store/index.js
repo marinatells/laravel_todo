@@ -96,11 +96,18 @@ export default new Vuex.Store({
 
         updateStatus(store, payload) {
             const token = store.state.token;
-            axios.post("api/tasks/update/" + payload.id, null, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
+            axios
+                .post("api/tasks/update/" + payload.id, null, {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                })
+                .then(() => {
+                    const task = store.state.tasks.find(
+                        (item) => item.id === payload.id
+                    );
+                    task.done = !task.done;
+                });
         },
 
         getTasks(store, payload) {

@@ -41,9 +41,9 @@ export default {
                 description: this.newTask.description,
             });
         },
-        mounted() {
-            this.$store.dispatch("getTasks");
-        },
+    },
+    mounted() {
+        this.$store.dispatch("getTasks");
     },
 };
 </script>
